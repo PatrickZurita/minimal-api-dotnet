@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7npEoCsjRwr625NI0Qb3fC8Q5x8OA7f3YtFPV6AQ5D0ajll+nuqGZmB6bb4ZUfgC4n0IrTwcNwNwwCBYvUsEvw==",
+  "dgSpecHash": "ogAcleE/WV9mVpg22ISjLgn2HZ4mC7959EP+i8WphOZMygF4j4qXPV52n+Ykp3V4R52ltLWb7Zokqs3VZaZDEw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\51996\\Desktop\\PersonalProjects\\minimal-api-net\\minimal-api-net.csproj",
+  "projectFilePath": "C:\\Users\\51996\\Documents\\GitHub\\minimal-api-dotnet\\minimal-api-net.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\51996\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\51996\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",

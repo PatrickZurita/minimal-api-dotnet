@@ -1,11 +1,11 @@
-﻿﻿using System.Reflection;
+﻿using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 
+// Add information of your API
 builder.Services.AddSwaggerGen(options =>
 {
     options.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
@@ -33,11 +33,9 @@ builder.Services.AddSwaggerGen(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -61,22 +59,16 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute( name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 
-var users = new User[]
+var users = new User[] // A sample array of users to test new features
 {
     new User(1),
     new User(2),
     new User(3)
 };
 
-app.MapGet("/users/{quantity})", (int quantity) =>
-{
-    return users.Take(quantity);
-});
-
+// MapPOST provided by ASP.NET Core
 app.MapPost("/users",() => {
     users = new User[]
     {
@@ -86,6 +78,36 @@ app.MapPost("/users",() => {
     };
 });
 
+// MapGet provided by ASP.NET Core
+// This endpoint will have filters, this a new feature of .NET 7
+app.MapGet("/users/{quantity})", (int quantity) =>
+{
+    return users.Take(quantity);
+}).AddEndpointFilter(async (context, next) => {
+    int quantity = context.GetArgument<int>(0);
+
+    if (quantity <= 0) {
+        return Results.Problem("The quantity must be greater than 0."); // AddEndpointFilter
+    }
+
+    return await next(context);
+}).AddEndpointFilter<MyFilter>(); // Add other filter
+
+
 app.Run();
 
-internal record User(int id);
+internal record User(int id); // A sample user to test new features
+
+public class MyFilter : IEndpointFilter // Implement Endopint Filter Class
+{
+    public async ValueTask<object?> InvokeAsync(EndpointFilterInvocationContext context, EndpointFilterDelegate next)
+    {
+        int quantity = context.GetArgument<int>(0);
+
+        if (quantity > 20) {
+            return Results.Problem("The quantity must be less than 20."); 
+        }
+        
+        return await next(context);    
+    }
+}

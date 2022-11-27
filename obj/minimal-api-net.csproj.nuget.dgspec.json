@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\51996\\Desktop\\PersonalProjects\\minimal-api-net\\minimal-api-net.csproj": {}
+    "C:\\Users\\51996\\Documents\\GitHub\\minimal-api-dotnet\\minimal-api-net.csproj": {}
   },
   "projects": {
-    "C:\\Users\\51996\\Desktop\\PersonalProjects\\minimal-api-net\\minimal-api-net.csproj": {
+    "C:\\Users\\51996\\Documents\\GitHub\\minimal-api-dotnet\\minimal-api-net.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\51996\\Desktop\\PersonalProjects\\minimal-api-net\\minimal-api-net.csproj",
+        "projectUniqueName": "C:\\Users\\51996\\Documents\\GitHub\\minimal-api-dotnet\\minimal-api-net.csproj",
         "projectName": "minimal-api-net",
-        "projectPath": "C:\\Users\\51996\\Desktop\\PersonalProjects\\minimal-api-net\\minimal-api-net.csproj",
+        "projectPath": "C:\\Users\\51996\\Documents\\GitHub\\minimal-api-dotnet\\minimal-api-net.csproj",
         "packagesPath": "C:\\Users\\51996\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\51996\\Desktop\\PersonalProjects\\minimal-api-net\\obj\\",
+        "outputPath": "C:\\Users\\51996\\Documents\\GitHub\\minimal-api-dotnet\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\51996\\AppData\\Roaming\\NuGet\\NuGet.Config"
