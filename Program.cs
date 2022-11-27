@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+﻿﻿using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -78,10 +78,12 @@ app.MapGet("/users/{quantity})", (int quantity) =>
 });
 
 app.MapPost("/users",() => {
-    foreach (User u in users)
+    users = new User[]
     {
-        u.id = u.id + 1;   
-    }
+        new User(3),
+        new User(4),
+        new User(5)
+    };
 });
 
 app.Run();
