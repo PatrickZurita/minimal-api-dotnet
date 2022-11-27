@@ -78,12 +78,10 @@ app.MapGet("/users/{quantity})", (int quantity) =>
 });
 
 app.MapPost("/users",() => {
-    users = new User[]
+    foreach (User u in users)
     {
-        new User(3),
-        new User(4),
-        new User(5)
-    };
+        u.id = u.id + 1;   
+    }
 });
 
 app.Run();
