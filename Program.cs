@@ -68,13 +68,20 @@ var users = new User[] // A sample array of users to test new features
     new User(3 , "Lil", 987789)
 };
 
-
-// MapPOST provided by ASP.NET Core
-app.MapGet("/users/{_id})",(int _id) => {
+// MapGET provided by ASP.NET Core
+app.MapGet("/GetUserByID/{_id})",(int _id) => {
     return
         from us in users
         where us.id == _id
         select us;
+}).AddEndpointFilter(async (context, next) => {
+    int _id = context.GetArgument<int>(0);
+
+    if (_id <= 0 || _id > users.Length){
+        return Results.Problem("The id must be greater than 0 and be less than total records id saved."); // AddEndpointFilter
+    }
+    
+    return await next(context);
 });
 
 // MapGet provided by ASP.NET Core
@@ -91,7 +98,6 @@ app.MapGet("/users/{quantity})", (int quantity) =>
 
     return await next(context);
 }).AddEndpointFilter<MyFilter>(); // Add other filter
-
 
 app.Run();
 
