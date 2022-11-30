@@ -80,7 +80,7 @@ app.MapGet("/GetUserByID/{_id})",(int _id) => {
 }).AddEndpointFilter(async (context, next) => {
     int _id = context.GetArgument<int>(0);
 
-    if (_id <= 0 || _id > users.Length){
+    if (_id <= 0 || _id > 5){
         return Results.Problem("The id must be greater than 0 and be less than total saved id records."); // AddEndpointFilter
     }
     
@@ -99,15 +99,17 @@ app.MapGet("/users/{quantity})", (int quantity) =>
         return Results.Problem("The quantity must be greater than 0."); // AddEndpointFilter
     }
 
-    if (quantity > users.Length) {
+    if (quantity > 5) {
         return Results.Problem("The quantity must be less than the total saved user records."); 
     }
             
     return await next(context);
 }).AddEndpointFilter<MyFilter>(); // Add other filter
 
+// MapPOST
 app.MapPost("/AddUser/{user}", (User user) => {
-    users.Append(user);
+    var nuevo = users.Append(user); //users no se actualiza
+    return nuevo; 
 });
 
 app.Run();
