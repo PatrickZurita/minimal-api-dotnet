@@ -2,6 +2,8 @@
 
 var builder = WebApplication.CreateBuilder(args);
 
+#region SWAGGER_PROGRAM_CONFIG
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();
 
@@ -54,12 +56,14 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
 app.UseAuthorization();
-
 app.MapControllerRoute( name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
+app.Run();
+
+#endregion
+
+#region MINIMAL_API
 
 var users = new User[] // A sample array of users to test new features
 {
@@ -99,8 +103,6 @@ app.MapGet("/users/{quantity})", (int quantity) =>
     return await next(context);
 }).AddEndpointFilter<MyFilter>(); // Add other filter
 
-app.Run();
-
 internal record User(int id, string name, int dni); // A sample user to test new features
 
 public class MyFilter : IEndpointFilter // Implement Endopint Filter Class
@@ -116,3 +118,5 @@ public class MyFilter : IEndpointFilter // Implement Endopint Filter Class
         return await next(context);    
     }
 }
+
+#endregion
