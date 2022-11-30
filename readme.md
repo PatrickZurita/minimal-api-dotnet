@@ -7,4 +7,3 @@ New features:
 - MapGet, MapPost, ..
 
 If you want to collaborate with this project check "contributring.md".
-
