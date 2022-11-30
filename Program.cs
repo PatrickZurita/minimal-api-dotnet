@@ -59,7 +59,6 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
 app.MapControllerRoute( name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
-app.Run();
 
 #endregion
 
@@ -82,7 +81,7 @@ app.MapGet("/GetUserByID/{_id})",(int _id) => {
     int _id = context.GetArgument<int>(0);
 
     if (_id <= 0 || _id > users.Length){
-        return Results.Problem("The id must be greater than 0 and be less than total records id saved."); // AddEndpointFilter
+        return Results.Problem("The id must be greater than 0 and be less than total saved id records."); // AddEndpointFilter
     }
     
     return await next(context);
@@ -100,8 +99,14 @@ app.MapGet("/users/{quantity})", (int quantity) =>
         return Results.Problem("The quantity must be greater than 0."); // AddEndpointFilter
     }
 
+    if (quantity > users.Length) {
+        return Results.Problem("The quantity must be less than the total saved user records."); 
+    }
+            
     return await next(context);
 }).AddEndpointFilter<MyFilter>(); // Add other filter
+
+app.Run();
 
 internal record User(int id, string name, int dni); // A sample user to test new features
 
@@ -112,7 +117,7 @@ public class MyFilter : IEndpointFilter // Implement Endopint Filter Class
         int quantity = context.GetArgument<int>(0);
 
         if (quantity > 20) {
-            return Results.Problem("The quantity must be less than 20."); 
+            return Results.Problem("The quantity must be less than the total saved user records."); 
         }
         
         return await next(context);    
