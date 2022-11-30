@@ -106,6 +106,10 @@ app.MapGet("/users/{quantity})", (int quantity) =>
     return await next(context);
 }).AddEndpointFilter<MyFilter>(); // Add other filter
 
+app.MapPost("/AddUser/{user}", (User user) => {
+    users.Append(user);
+});
+
 app.Run();
 
 internal record User(int id, string name, int dni); // A sample user to test new features
