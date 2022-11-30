@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\51996\\Documents\\GitHub\\minimal-api-dotnet\\minimal-api-net.csproj": {}
+    "/workspaces/minimal-api-dotnet/minimal-api-net.csproj": {}
   },
   "projects": {
-    "C:\\Users\\51996\\Documents\\GitHub\\minimal-api-dotnet\\minimal-api-net.csproj": {
+    "/workspaces/minimal-api-dotnet/minimal-api-net.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\51996\\Documents\\GitHub\\minimal-api-dotnet\\minimal-api-net.csproj",
+        "projectUniqueName": "/workspaces/minimal-api-dotnet/minimal-api-net.csproj",
         "projectName": "minimal-api-net",
-        "projectPath": "C:\\Users\\51996\\Documents\\GitHub\\minimal-api-dotnet\\minimal-api-net.csproj",
-        "packagesPath": "C:\\Users\\51996\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\51996\\Documents\\GitHub\\minimal-api-dotnet\\obj\\",
+        "projectPath": "/workspaces/minimal-api-dotnet/minimal-api-net.csproj",
+        "packagesPath": "/home/codespace/.nuget/packages/",
+        "outputPath": "/workspaces/minimal-api-dotnet/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\51996\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/codespace/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
@@ -62,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/dotnet/7.0.100/sdk/7.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -63,19 +63,18 @@ app.MapControllerRoute( name: "default", pattern: "{controller=Home}/{action=Ind
 
 var users = new User[] // A sample array of users to test new features
 {
-    new User(1),
-    new User(2),
-    new User(3)
+    new User(1, "Patrick", 123321),
+    new User(2, "Dwuart", 321123),
+    new User(3 , "Lil", 987789)
 };
 
+
 // MapPOST provided by ASP.NET Core
-app.MapPost("/users",() => {
-    users = new User[]
-    {
-        new User(3),
-        new User(4),
-        new User(5)
-    };
+app.MapGet("/users/{_id})",(int _id) => {
+    return
+        from us in users
+        where us.id == _id
+        select us;
 });
 
 // MapGet provided by ASP.NET Core
@@ -96,7 +95,7 @@ app.MapGet("/users/{quantity})", (int quantity) =>
 
 app.Run();
 
-internal record User(int id); // A sample user to test new features
+internal record User(int id, string name, int dni); // A sample user to test new features
 
 public class MyFilter : IEndpointFilter // Implement Endopint Filter Class
 {
